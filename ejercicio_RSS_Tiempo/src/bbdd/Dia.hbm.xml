@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 14 feb 2023 10:49:52 by Hibernate Tools 6.1.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="tiempo" name="bbdd.Dia" optimistic-lock="none" table="dia">
+        <id name="dia" type="date">
+            <column length="10" name="DIA"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="tempmax" type="int">
+            <column name="TEMPMAX" not-null="true"/>
+        </property>
+        <property name="tempmin" type="int">
+            <column name="TEMPMIN" not-null="true"/>
+        </property>
+        <property name="descripcion" type="string">
+            <column length="100" name="DESCRIPCION" not-null="true"/>
+        </property>
+        <property name="humedad" type="int">
+            <column name="HUMEDAD" not-null="true"/>
+        </property>
+        <property name="viento" type="int">
+            <column name="VIENTO" not-null="true"/>
+        </property>
+        <property name="direccion" type="string">
+            <column length="100" name="DIRECCION" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="horas" table="hora">
+            <key>
+                <column length="10" name="DIA" not-null="true"/>
+            </key>
+            <one-to-many class="bbdd.Hora"/>
+        </set>
+    </class>
+</hibernate-mapping>

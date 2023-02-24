@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 14 feb 2023 10:49:52 by Hibernate Tools 6.1.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="tiempo" name="bbdd.Hora" optimistic-lock="none" table="hora">
+        <composite-id class="bbdd.HoraId" name="id">
+            <key-property name="dia" type="date">
+                <column length="10" name="DIA"/>
+            </key-property>
+            <key-property name="hora" type="time">
+                <column length="8" name="HORA"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="bbdd.Dia" fetch="select" insert="false" name="dia" update="false">
+            <column length="10" name="DIA" not-null="true"/>
+        </many-to-one>
+        <property name="temp" type="int">
+            <column name="TEMP" not-null="true"/>
+        </property>
+        <property name="descripcion" type="string">
+            <column length="100" name="DESCRIPCION" not-null="true"/>
+        </property>
+        <property name="presion" type="int">
+            <column name="PRESION" not-null="true"/>
+        </property>
+        <property name="humedad" type="int">
+            <column name="HUMEDAD" not-null="true"/>
+        </property>
+        <property name="viento" type="int">
+            <column name="VIENTO" not-null="true"/>
+        </property>
+        <property name="direccion" type="string">
+            <column length="100" name="DIRECCION" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
